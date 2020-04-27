@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//src/main/java/iducs/spring/blog/domain/Blog.java=UTF-8
+encoding//src/main/java/iducs/spring/blog/repository/BlogRepositoryImpl.java=UTF-8
+encoding//src/main/java/iducs/spring/blog/service/BlogService.java=UTF-8
+encoding//src/main/java/iducs/spring/blog/service/BlogServiceImpl.java=UTF-8
