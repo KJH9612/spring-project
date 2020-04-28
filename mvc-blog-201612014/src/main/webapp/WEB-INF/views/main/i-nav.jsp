@@ -10,7 +10,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="blog-new">write blog</a>
+            <a class="nav-link" href="blogs-post">write blog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="blogs-all">show blogs</a>

@@ -9,7 +9,7 @@ public class BlogController {
 	public String main() {
 		return "main/index";
 	}
-	@RequestMapping(value = "/blog-new")
+	@RequestMapping(value = "/blogs-post")
 	public String postBlog() {
 		return "blogs/new-form";
 	}
