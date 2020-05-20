@@ -16,7 +16,7 @@
   <%@ include file="../main/i-nav.jsp" %>
   
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/contact-bg.jpg')">
+  <header class="masthead" style="background-image: url('../resources/img/contact-bg.jpg')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -40,8 +40,8 @@
         <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
 
 
-        <form action="blogs-put" method="post" enctype="multipart/form-data" 
-        	name="sentMessage" id="contactForm" novalidate>
+        <form method="POST" action="./${blog.id }" enctype="multipart/form-data" 
+        	id="updateForm">
         	<input type="hidden" name="id" value="${blog.id }" />
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
@@ -85,7 +85,8 @@
           <div id="success"></div>
 
           <div class="form-group">
-            <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
+            <button type="submit" class="btn btn-primary" id="sendMessageButton">Update</button>
+            <button type="reset" class="btn btn-primary" id="sendMessageButton">Reset</button>
           </div>
         </form>
       </div>
@@ -98,15 +99,15 @@
   <%@ include file="../main/i-footer.jsp" %>
 
     <!-- Bootstrap core JavaScript -->
-  <script src="<c:url value="/vendor/jquery/jquery.min.js"/>"></script>
-  <script src="<c:url value="/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Contact Form JavaScript -->
-  <script src="<c:url value="/js/jqBootstrapValidation.js"/>"></script>
-  <script src="<c:url value="/js/contact_me.js"/>"></script>
+  <script src="../js/jqBootstrapValidation.js"></script>
+  <script src="../js/contact_me.js"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="<c:url value="/js/clean-blog.min.js"/>"></script>
+  <script src="../js/clean-blog.min.js"></script>
 
 	<script src="https://code.jquery.com/jquery.min.js"></script>
 	

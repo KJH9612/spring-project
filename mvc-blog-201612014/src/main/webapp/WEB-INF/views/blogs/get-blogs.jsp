@@ -17,7 +17,7 @@
   <jsp:include page="../main/i-nav.jsp" />
   
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+  <header class="masthead" style="background-image: url('../resources/img/home-bg.jpg')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -35,9 +35,9 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-      	<c:forEach items="${requestScope.bloglist }" var="blog">      	
+      	<c:forEach items="${requestScope.blogList }" var="blog">      	
         <div class="post-preview">
-          <a href="blogs-get?id=${blog.id }">
+          <a href="../blogs/${blog.id }">
             <h2 class="post-title">
               ${blog.title }
             </h2>
@@ -65,11 +65,11 @@
   <%@ include file="../main/i-footer.jsp" %>
   
   <!-- Bootstrap core JavaScript -->
-  <script src="<c:url value="/vendor/jquery/jquery.min.js"/>"></script>
-  <script src="<c:url value="/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="<c:url value="/js/clean-blog.min.js"/>"></script>
+  <script src="../js/clean-blog.min.js"></script>
 
 </body>
 

@@ -16,7 +16,7 @@
   <%@ include file="../main/i-nav.jsp" %>
   
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/post-bg.jpg')">
+  <header class="masthead" style="background-image: url('../resources/img/post-bg.jpg')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -41,15 +41,17 @@
           <h2 class="section-heading">${blog.title }</h2>
 		  <p>${blog.content } : Space, the final frontier. These are the voyages of the Starship Enterprise.</p>	
           <a href="#">
-            <img class="img-fluid" src="./files/${blog.filepath}" alt="">
+            <img class="img-fluid" src="../resources/uploads/${blog.filepath}" alt="">
           </a>
           <span class="caption text-muted">To go places and do things that have never been done</span>
           <p> Written ${blog.regDateTime } 
           Photographs by <a href="#">${blog.blogger }</a>.</p>
           <div class="clearfix">
-	         <a class="btn btn-primary float-right" href="./blogs-edit?id=${blog.id }">수정 &rarr;</a>
-	         &nbsp;&nbsp;&nbsp;
-	         <a class="btn btn-primary" href="./blogs-delete?id=${blog.id}">삭제&rarr;</a>
+	         <a class="btn btn-primary float-right" href="./edit?id=${blog.id}">수정 &rarr;</a> 
+	         <form method="post" action="./${blog.id}">
+	         	<input type="hidden" name="_method" value="DELETE"/>
+	         	<button type="submit" class= "btn btn-primary float-right">삭제 &rarr;</button>
+	         </form>
 	       </div>
         </div>
       </div>

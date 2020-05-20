@@ -14,11 +14,12 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-	<resources mapping="/css/**" location="/resources/css/"/>
-	<resources mapping="/img/**" location="/resources/img/"/>
-	<resources mapping="/js/**" location="/resources/js/"/>
-	<resources mapping="/scss/**" location="/resources/scss/"/>
-	<resources mapping="/vendor/**" location="/resources/vendor/"/>
+	<resources mapping="/css/**" location="/resources/css/" />
+	<resources mapping="/img/**" location="/resources/img/" />
+	<resources mapping="/js/**" location="/resources/js/" />
+	<resources mapping="/vendor/**" location="/resources/vendor/" />
+	<resources mapping="/mail/**" location="/resources/mail/" />
+	<resources mapping="/scss/**" location="/resources/scss/" />
 	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -28,8 +29,4 @@
 	
 	<context:component-scan base-package="iducs.spring.blog201612014" />
 	<context:component-scan base-package="iducs.spring.blog.controller" />
-	<context:component-scan base-package="iducs.spring.blog.domain" />
-	<context:component-scan base-package="iducs.spring.blog.repository" />
-	<context:component-scan base-package="iducs.spring.blog.service" />
-	
 </beans:beans>

@@ -55,7 +55,12 @@ public class Blog {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((blogger == null) ? 0 : blogger.hashCode());
+		result = prime * result + ((content == null) ? 0 : content.hashCode());
+		result = prime * result + ((filepath == null) ? 0 : filepath.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((regDateTime == null) ? 0 : regDateTime.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
 	@Override
@@ -67,8 +72,34 @@ public class Blog {
 		if (getClass() != obj.getClass())
 			return false;
 		Blog other = (Blog) obj;
+		if (blogger == null) {
+			if (other.blogger != null)
+				return false;
+		} else if (!blogger.equals(other.blogger))
+			return false;
+		if (content == null) {
+			if (other.content != null)
+				return false;
+		} else if (!content.equals(other.content))
+			return false;
+		if (filepath == null) {
+			if (other.filepath != null)
+				return false;
+		} else if (!filepath.equals(other.filepath))
+			return false;
 		if (id != other.id)
 			return false;
+		if (regDateTime == null) {
+			if (other.regDateTime != null)
+				return false;
+		} else if (!regDateTime.equals(other.regDateTime))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
 		return true;
-	}	
+	}
+	
 }
