@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,12 +13,17 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import iducs.spring.blog.domain.Blog;
 import iducs.spring.blog.service.BlogService;
-import jdk.nashorn.internal.ir.RuntimeNode.Request;
+//import jdk.nashorn.internal.ir.RuntimeNode.Request;
 
 @Controller
 public class BlogController {
+	private static final Logger logger = LoggerFactory.getLogger(BlogController.class);
+	
 	private BlogService blogService;
 	private String uploadPath;
 	public BlogController(BlogService blogService)
@@ -31,20 +37,23 @@ public class BlogController {
 		return "redirect:/main/index";
 	}
 	@GetMapping("/blogs/get-blogs")
-	public String getBlogs(Model model) {
+	public String getBlogs(Locale local, Model model) {
+		logger.info("GetBlogs");
 		List<Blog> blogList = blogService.getBlogs();
 		model.addAttribute("blogList", blogList);
 		return "blogs/get-blogs";
 	}
 	@GetMapping("/blogs/{id}")
-	public String getBlog(@PathVariable("id") Long id, Model model) {
+	public String getBlog(@PathVariable("id") Long id, Locale local, Model model) {
+		logger.info("GetBlog");
 		model.addAttribute("blog",blogService.getBlog(id));
 		return "blogs/get-blog";
 	}
 	
 	@PostMapping("/blogs")
 	@Transactional
-	public String postBlog(MultipartHttpServletRequest request, Model model) throws IllegalStateException, IOException {
+	public String postBlog(MultipartHttpServletRequest request, Locale local, Model model) throws IllegalStateException, IOException {
+		logger.info("PostBlog");
 		Blog blog = new Blog();
 		blog.setTitle(request.getParameter("title"));
 		blog.setContent(request.getParameter("content"));
@@ -61,8 +70,10 @@ public class BlogController {
 			
 		}
 		blogService.postBlog(blog);
+		
 		return "redirect:/blogs/get-blogs";
 	}
+	//n Log
 	@GetMapping("/blogs/new-blog")
 	public String newBlog(Model model) {
 		return "blogs/new-form";
@@ -77,15 +88,16 @@ public class BlogController {
 			@RequestParam final String blogger,
 			@RequestParam Timestamp regDateTime,
 			@RequestParam("filepath") MultipartFile file,
-			Model model) throws IllegalStateException, IOException
+			Locale local, Model model) throws IllegalStateException, IOException
 	{
+		logger.info("UpdateBlog");
+		
 		Blog blog = new Blog();
 		blog.setId(id);
 		blog.setTitle(title);
 		blog.setContent(content);
 		blog.setBlogger(blogger);
 		blog.setRegDateTime(regDateTime);
-		System.out.println(regDateTime);
 		uploadPath = this.getClass().getResource("/").getPath() + "..\\..\\resources\\uploads";
 		if(!file.getOriginalFilename().isEmpty()) {
 			file.transferTo(new File(uploadPath, file.getOriginalFilename()));
@@ -109,6 +121,7 @@ public class BlogController {
 	
 	@DeleteMapping("/blogs/{id}")
 	public String deleteBlog(@PathVariable long id, Model model) {
+		logger.info("DeleteBlog");
 		int count = blogService.deleteBlog(id);
 		
 		if(count > 0)
